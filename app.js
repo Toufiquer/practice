@@ -8,29 +8,45 @@ let warning = (data, isShow) => {
     }
 }
 // *****************************************************
-let getCart = () => {
-    let cart = localStorage.getItem('cart')
-    let cartObj
-    if (cart) {
-        cartObj = JSON.parse(cart)
+let gitItem = () => {
+    let item = localStorage.getItem('item')
+    let itemObj
+    if (item) {
+        itemObj = JSON.parse(item)
     } else {
-        cartObj = {}
+        itemObj = {}
     }
-    return cartObj
+    return itemObj
 }
-let makeData = (name, price) => {
-    let cart = getCart()
-    let newCart = JSON.stringify(cart)
-    if (newCart === '{}') {
-        console.log('empty')
-    } else {
-        console.log('Not empty')
+let newId = () => {
+    id = 0
+    return oldId => {
+        id += oldId
+        return id
     }
-    console.log(cart)
+}
+let itemNum = newId()
+let allData = []
+let makeData = (name, price) => {
+    const idNum = itemNum(1)
+    console.log(idNum)
+    allData[idNum] = {
+        name: name,
+        price: price
+    }
+    // let newItem = JSON.stringify(item)
+
+    // console.log(item, newItem)
 }
 let saveItem = (name, price) => {
-    makeData(name, price)
-    console.log(name, price)
+    let makeDataArray = makeData(name, price)
+    let item = gitItem()
+    item = { allData }
+    console.log(item)
+    makeDataArray = JSON.stringify(makeDataArray)
+    item = JSON.stringify(item)
+    localStorage.setItem('product', item)
+    // console.log(name, price, makeDataArray)
 }
 // *****************************************************
 let displayItem = (name, price) => {
@@ -73,3 +89,43 @@ dQS('#clear').addEventListener('click', () => {
     dQS('#main').textContent = ''
     localStorage.removeItem('product')
 })
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// setInterval(() => {
+//     console.log(newNum())
+// }, 500)
+
+
+// // Closer
+// let newId = () => {
+//     id = 0
+//     return oldId => {
+//         id += oldId
+//         return id
+//     }
+// }
+// let item = newId()
+// console.log(item(1))
+// let controlNum = item(1)
+
+// let idInterVel = setInterval(() => {
+//     const conNum = item(1)
+//     console.log(conNum)
+//     console.log(conNum)
+//     // if (item(1) > 5) { clearInterval(idInterVel) }
+// }, 1500)
