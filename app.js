@@ -29,26 +29,38 @@ let itemNum = newId()
 let allData = []
 let makeData = (name, price) => {
     const idNum = itemNum(1)
-    console.log(idNum)
+    // console.log(idNum)
     allData[idNum] = {
         name: name,
         price: price
     }
     // let newItem = JSON.stringify(item)
-
     // console.log(item, newItem)
 }
 let saveItem = (name, price) => {
     let makeDataArray = makeData(name, price)
     let item = gitItem()
     item = { allData }
-    console.log(item)
+    // console.log(item)
     makeDataArray = JSON.stringify(makeDataArray)
     item = JSON.stringify(item)
-    localStorage.setItem('product', item)
+    localStorage.setItem('item', item)
     // console.log(name, price, makeDataArray)
 }
 // *****************************************************
+let loadData = () => {
+    let allData = gitItem().allData
+    // allData = allData.allData
+    // console.log(allData.length)
+    // console.log(allData[1].name)
+    for (let i = 1; i < allData.length; i++) {
+        // console.log(allData[i])
+        let itemName = allData[i].name
+        let itemPrice = allData[i].price
+        // console.log(itemName, itemPrice)
+        displayItem(itemName, itemPrice)
+    }
+}
 let displayItem = (name, price) => {
     let div = document.createElement('div')
     div.classList.add = 'container'
@@ -90,42 +102,4 @@ dQS('#clear').addEventListener('click', () => {
     localStorage.removeItem('product')
 })
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// setInterval(() => {
-//     console.log(newNum())
-// }, 500)
-
-
-// // Closer
-// let newId = () => {
-//     id = 0
-//     return oldId => {
-//         id += oldId
-//         return id
-//     }
-// }
-// let item = newId()
-// console.log(item(1))
-// let controlNum = item(1)
-
-// let idInterVel = setInterval(() => {
-//     const conNum = item(1)
-//     console.log(conNum)
-//     console.log(conNum)
-//     // if (item(1) > 5) { clearInterval(idInterVel) }
-// }, 1500)
+loadData()
