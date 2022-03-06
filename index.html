@@ -12,6 +12,15 @@
         .display-none {
             display: none;
         }
+
+        #display-none-item {
+            position: absolute;
+            top: 32px;
+        }
+
+        #item {
+            position: relative
+        }
     </style>
 </head>
 
@@ -45,15 +54,18 @@
                             </div>
                         </div>
                     </div>
-                    <!-- <div class="col-4">
+                    <div class="col-4">
                         <div class="p-3">
                             <div class="input-group input-group-sm mb-3">
                                 <span class="input-group-text">Item: </span>
-                                <input id="item" type="text" class="form-control" aria-label="Sizing example input"
-                                    aria-describedby="inputGroup-sizing-sm">
+                                <input id="item" value="1" type="text" class="form-control"
+                                    aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+                                <div id="display-none-item" class="alert alert-warning display-none" role="alert">
+                                    <div id="warning-data-item" class="d-inline-block">Positive Number</div>
+                                </div>
                             </div>
                         </div>
-                    </div> -->
+                    </div>
                     <div class="col-12">
                         <div id="display-none" class="alert alert-warning display-none" role="alert">
                             <div id="warning-data" class="d-inline-block"></div>

@@ -1,3 +1,4 @@
+
 let dQS = id => { return document.querySelector(id) }
 let warning = (data, isShow) => {
     if (isShow) {
@@ -7,6 +8,21 @@ let warning = (data, isShow) => {
         dQS('#display-none').style.display = 'none'
     }
 }
+dQS('#clear').addEventListener('click', () => {
+    dQS('#main').textContent = ''
+    localStorage.removeItem('item')
+    console.clear()
+})
+dQS('#item').addEventListener('keyup', () => {
+    let value = dQS('#item').value
+    if (value < 0) {
+        dQS('#display-none-item').style.display = 'block'
+        dQS('#display-none-item').style.border = '1px solid red'
+    } else {
+        dQS('#display-none-item').style.display = 'none'
+        dQS('#display-none-item').style.border = ''
+    }
+})
 // *****************************************************
 let gitItem = () => {
     let item = localStorage.getItem('item')
@@ -58,6 +74,7 @@ let loadData = () => {
         let itemName = allData[i].name
         let itemPrice = allData[i].price
         // console.log(itemName, itemPrice)
+        makeData(itemName, itemPrice)
         displayItem(itemName, itemPrice)
     }
 }
@@ -97,9 +114,6 @@ dQS('#add').addEventListener('click', () => {
     displayItem(product, priceInput)
     // console.log(product, priceInput)
 })
-dQS('#clear').addEventListener('click', () => {
-    dQS('#main').textContent = ''
-    localStorage.removeItem('product')
-})
+
 
 loadData()
